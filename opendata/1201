@@ -1,0 +1,57 @@
+<html>
+<head>
+
+<title>雲林縣綠色商店</title>
+<h1>雲林縣綠色商店</h1>
+
+</head>
+<body>
+<?php
+//由網路上讀資料
+$xml資料= file_get_contents("https://ws.yunlin.gov.tw/001/Upload/539/opendata/15369/792/3a610b9f-12e0-4e7f-b9e9-7c14577999da.xml");
+//把xml資料轉成xml物件
+$xml物件 = simplexml_load_string($xml資料);
+//把XML物件轉成json物件
+$json物件=json_encode($xml物件);
+//把json物件轉為陣列
+$o=json_decode($json物件,true);
+//print_r($o);
+foreach($o["Data"]as $v){
+    echo "商店類型:$v[綠色商店類型]<br/>聯絡地址:$v[聯絡地址]<br/>";
+
+
+
+}
+
+
+?>
+</body>
+</html>
+<html>
+<head>
+
+<title>農村美食</title>
+<h2>123</h2>
+</head>
+<body>
+<?php
+//由網路上讀資料
+$xml資料= file_get_contents("https://data.coa.gov.tw/Service/OpenData/ODwsv/ODwsvTravelFood.aspx?FOTT=Xml");
+//把xml資料轉成xml物件
+$xml物件 = simplexml_load_string($xml資料);
+//把XML物件轉成json物件
+$json物件=json_encode($xml物件);
+//把json物件轉為陣列
+$o=json_decode($json物件,true);
+//print_r($o);
+foreach($o["row"]as $v){
+    echo "名稱:$v[Name]<br/>";
+
+
+
+}
+
+
+?>
+</body>
+</html>
